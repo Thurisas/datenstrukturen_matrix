@@ -24,10 +24,10 @@ matrix::matrix(int m,int n)
     {
         this->m=m;
         this->n=n;
-
         this->pmatrix = new int* [m];
 
-        for (int i = 0 ; i<n;i++){
+        for (int i=0;i<m;i++)
+        {
             this->pmatrix[i]=new int[n];
         }
 
@@ -67,16 +67,16 @@ void matrix::set(int* insertArray)
         }
 
     }
-    else cout << "es wurde nichts in die Matrix eingetragen!" << endl;
+    else cout << "Es wurde nichts in die Matrix eingetragen!" << endl;
 }
 
 void matrix::out()
  {
-    for(int i=0;i<m;i++)
+    for(int i=0;i < this->m;i++)
     {
-        for(int j=0;j<n;j++)
+        for(int j=0;j < this->n;j++)
         {
-            cout << left << setw(6) << pmatrix[i+j];
+            cout << left << setw(6) << this->pmatrix[i][j];
         }
         cout << endl;
     }

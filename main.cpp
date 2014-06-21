@@ -15,9 +15,7 @@ matrix readNewMatrix(char* filename)
         {
             matrixInput >> dim_m;
             matrixInput >> dim_n;
-
             matrix myNewMatrix(dim_m,dim_n);
-
             int* tmpInput = new int[dim_m*dim_n];
             for(int i=0;i<(dim_m*dim_n);i++)
             {
@@ -26,7 +24,10 @@ matrix readNewMatrix(char* filename)
             myNewMatrix.set(tmpInput);
             delete[] tmpInput;
 
+            matrixInput.close();
+            myNewMatrix.out();
             return myNewMatrix;
+
         }
         else
         {
@@ -40,22 +41,22 @@ matrix readNewMatrix(char* filename)
 
 int main(int argc, char *argv[])
 {
+
     if ( argc == 3 )
     {
         cout << "Die Dateien " << argv[1] << " und " << argv[2] << "werden eingelesen" << endl;
 
         char* filename1 = argv[1];
-        char* filename2 = argv[2];
+        //char* filename2 = argv[2];
 
-        matrix myMatrix1 = readNewMatrix(filename1);
-        matrix myMatrix2 = readNewMatrix(filename2);
-
-        myMatrix1.out;
-        myMatrix2.out;
-
-
-
+        matrix myMatrix = readNewMatrix(filename1);
+       // matrix myMatrix2 = readNewMatrix(filename2);
+        myMatrix.out();
+       // myMatrix2.out();
+        cout << "test" << endl;
+        myMatrix.~matrix();
     }
     matrix test(3,2);
     test.out();
+    return 0;
 }
